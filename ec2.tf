@@ -4,7 +4,7 @@ resource "aws_instance" "tf_ec2_1" {
   iam_instance_profile = var.ec2_iam_role
   tags = {
     Name = "tf-demo-instance"
-    uai  = "UAI617263"
+    uai  = "79364ghsgdh"
     demotag = "dummy"
 
   }
