@@ -7,7 +7,7 @@ terraform {
   }
   backend "s3" {
     bucket = "demo-terraform-state-bkt"
-    key    = "my-terraform-state"
+    key    = "demo-terraform.tfstate"
     region = "ap-south-1"
   }
   required_version = ">= 1.2.0"
