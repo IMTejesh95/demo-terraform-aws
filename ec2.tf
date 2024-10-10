@@ -3,7 +3,7 @@ resource "aws_instance" "demo_ec2" {
   instance_type        = var.instance_type
   iam_instance_profile = var.ec2_iam_role
   count                = 2
-  security_groups      = [aws_security_group.tf_demo_sg.id]
+  security_groups      = ["tf-demo-sg"]
   tags = {
     Name     = "tf-demo-instance"
     DummyTag = "DummyValue"
