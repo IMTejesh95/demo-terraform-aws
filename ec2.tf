@@ -28,7 +28,7 @@ resource "aws_security_group_rule" "allow_tls" {
 resource "aws_security_group_rule" "allow_ssh" {
   security_group_id = aws_security_group.tf_demo_sg.id
   from_port = 22
-  protocol = "SSH"
+  protocol = "TCP"
   to_port = 22
   cidr_blocks = ["0.0.0.0/0"]
   type = "ingress"
