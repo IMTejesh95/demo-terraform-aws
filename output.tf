@@ -1,8 +1,5 @@
 output "instances" {
-  description = "ID of the EC2 instance"
-  value       = {
-    for instance in aws_instance.tf_ec2_1:
-      instance.id => instance.id
-  }
+  description = "IDs of the EC2 instances"
+  value       = [for instance in aws_instance.demo_ec2 : instance.id]
 }
 
