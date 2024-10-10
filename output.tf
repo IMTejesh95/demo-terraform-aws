@@ -1,5 +1,5 @@
-output "instance_id" {
+output "instances" {
   description = "ID of the EC2 instance"
-  value       = aws_instance.tf_ec2_1.id
+  value       = aws_instance
 }
 
