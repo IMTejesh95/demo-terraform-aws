@@ -22,8 +22,10 @@ env:
  # verbosity setting for Terraform logs
  TF_LOG: INFO
  # Credentials for deployment to AWS
- AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
- AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+ AWS_REGION: ${{ vars.AWS_REGION }}
+ AWS_IAM_ASSUME_ROLE: ${{ secrets.AWS_IAM_ROLE }}
+ # AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+ # AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
 
 jobs:
   terraform:
@@ -35,6 +37,13 @@ jobs:
     # Checkout the repository to the GitHub Actions runner
     - name: Checkout
       uses: actions/checkout@v4
+      
+    # Setup AWS authorization
+    - name: Configure AWS Credentials
+      uses: aws-actions/configure-aws-credentials@v1
+      with:
+        role-to-assume: ${{ env.AWS_IAM_ASSUME_ROLE }}
+        aws-region: ${{ env.AWS_REGION }}
 
     # Install the latest version of Terraform CLI and configure the Terraform CLI configuration file with a Terraform Cloud user API token
     - name: Setup Terraform
