@@ -22,8 +22,6 @@ env:
  # verbosity setting for Terraform logs
  TF_LOG: INFO
  # Credentials for deployment to AWS
- AWS_REGION: ${{ vars.AWS_REGION }}
- AWS_IAM_ASSUME_ROLE: ${{ secrets.AWS_IAM_ROLE }}
  # AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
  # AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
 
@@ -32,6 +30,8 @@ jobs:
     name: 'Terraform'
     runs-on: ubuntu-latest
     environment: dev
+    permissions:
+      id-token: write
 
     steps:
     # Checkout the repository to the GitHub Actions runner
