@@ -15,8 +15,6 @@ name: 'Terraform'
 on:
   push:
     branches: [ "cleanup" ]
-  pull_request:
-
 
 env:
  # verbosity setting for Terraform logs
